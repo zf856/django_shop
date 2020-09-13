@@ -1,5 +1,4 @@
-{% load static%}
-
+{% load static %}
 <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
         <div class="container">
@@ -49,10 +48,16 @@
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-user"></i> حساب کاربـری</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> {{ data }}</a></li>
                             <li><a href="#"><i class="fa fa-star"></i> لیست علاقه مندی ها</a></li>
-                            <li><a href="login.html"><i class="fa fa-lock"></i> ورود</a></li>
                             <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> سبد خریـد</a></li>
+
+                            {% if not request.user.is_authenticated %}
+                                <li><a href="/login"><i class="fa fa-lock"></i> ورود</a></li>
+                                <li><a href="/register"><i class="fa fa-lock"></i> ثبت نام</a></li>
+                            {% else %}
+                                <li><a href="/admin/logout"><i class="fa fa-lock"></i> خروج </a></li>
+                            {% endif %}
+
                         </ul>
                     </div>
                 </div>
@@ -64,11 +69,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-sm-3">
-                    <div class="search_box pull-left">
-                        <input type="text" placeholder="جستـجو"/>
-                    </div>
-                </div>
+                {% include 'shared/search_products_input_component.html' %}
 
                 <div class="col-sm-9">
                     <div class="navbar-header">
@@ -82,16 +83,8 @@
                     </div>
                     <div class="mainmenu pull-right">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="index.html" class="active">خـانه</a></li>
-                            <li class="dropdown"><a href="#">فروشگـاه<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="shop.html">محصولات</a></li>
-                                    <li><a href="product-details.html">جزئیات محصولات</a></li>
-                                    <li><a href="checkout.html">پرداخت</a></li>
-                                    <li><a href="cart.html">سبـد خریـد</a></li>
-                                    <li><a href="login.html">ورود</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="/">خـانه</a></li>
+                            <li><a href="/products">محصولات</a></li>
                             <li class="dropdown"><a href="#">اخبـار<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="blog.html">آخریـن اخبـار</a></li>

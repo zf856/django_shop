@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django_render_partial',
 
     #our applications
-
+    'eshop_account',
+    'eshop_products',
+    'eshop_tag',
+    'eshop_products_category',
+    'eshop_sliders'
 ]
 
 MIDDLEWARE = [
@@ -104,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa-ir'
 
 TIME_ZONE = 'UTC'
 
@@ -118,6 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 # STATIC_URL = '/static/'
+
+
 STATIC_URL = '/site_statics/'
 
 STATICFILES_DIRS = [
@@ -129,3 +135,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn", "static_root")
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
+
